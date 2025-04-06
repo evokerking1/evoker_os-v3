@@ -4,3 +4,7 @@ build-std-features = ["compiler-builtins-mem"]
 
 [build]
 target = "x86_64-evoker_OS-v3.json"
+
+[target.'cfg(target_os = "none")']
+runner = "bootimage runner"
+
