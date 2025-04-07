@@ -5,9 +5,7 @@
 
 mod vga_buffer;
 
-
 use core::panic::PanicInfo;
-
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
@@ -21,9 +19,11 @@ fn panic(info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     println!("Hello World{}", "!");
 
+    #[cfg(test)]
+    test_main();
+
     loop {}
 }
-
 
 #[cfg(test)]
 pub fn test_runner(tests: &[&dyn Fn()]) {
@@ -31,4 +31,11 @@ pub fn test_runner(tests: &[&dyn Fn()]) {
     for test in tests {
         test();
     }
+}
+
+#[test_case]
+fn trivial_assertion() {
+    print!("trivial assertion...");
+    assert_eq!(1, 1);
+    print!("[ok]!")
 }
