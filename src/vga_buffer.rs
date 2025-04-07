@@ -1,7 +1,6 @@
 
 use volatile::Volatile;
 use core::fmt;
-use core::fmt::Write;
 
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
